@@ -1,8 +1,10 @@
 // OriginJson > ModifiedJson 수정된 부분 찾는 함수
-/* author: Song sungeun,
-   func: get the modified data from target Json
-   params: original Json, comparison Json
-   return: modified data object(json Type) or false(if. same json)
+/**
+ * @author: Song sungeun,
+ * @param {object} originJson
+ * @param {object} modifiedJson (comparison Json)
+   @description get the modified data from target Json
+   @returns {object || boolean} modified data object(json Type) or false(if. same json)
 */
 const compareJson = (originJson, modifiedJson) => {
   let differencedValues;
@@ -39,3 +41,36 @@ const compareJson = (originJson, modifiedJson) => {
   }
   return differencedValues ? differencedValues : false;
 };
+
+/**
+ * func: sort by targetKey value
+ * @author Song sungeun
+ * @param {Array} jsonArr 
+ * @param {String} targetKey 
+ * @returns {Array} jsonArray
+ */
+const jsonSort = (jsonArr, targetKey) => {
+  if (!Array.isArray(jsonArr)) throw new Error('The first parameter must be an Array in jsonSort Function');
+  if (!targetKey) console.error('check the second parameter. The second parmeter is what you want to sort in jsonSort Function');
+
+  let type = typeof jsonArr[targetKey];
+
+  jsonArr.sort((current, next) => {
+    let value, nextValue;
+    value = type === 'string' ? current[targetKey].toUpperCase() : current[targetKey];
+    nextValue = type === 'string' ? next[targetKey].toUpperCase() : next[targetKey];
+
+    if (value < nextValue) return -1;
+    if (value > nextValue) return 1;
+    return 0;
+  });
+
+  return jsonArr;
+}
+
+const jsonSortByKey = (jsonData) => {
+
+}
+
+export { compareJson, jsonSort };
+
