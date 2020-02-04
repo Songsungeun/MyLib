@@ -9,27 +9,19 @@ const compareJson = (originJson, modifiedJson) => {
       continue;
     }
 
+    // hasKey => jsonType ? recursive call : insert
     if (originJson[key] !== modifiedJson[key]) {
-      differencedValues[key] = modifiedJson[key];
+
+      try {
+        if (originJson[key].constructor === Object && modifiedJson[key].constructor === Object) {
+          differencedValues[key] = compareJson(originJson[key], modifiedJson[key]);
+          continue;
+        }
+        differencedValues[key] = modifiedJson[key];
+      } catch (e) {
+        differencedValues[key] = modifiedJson[key];
+      }
     }
   }
   return differencedValues;
 };
-
-let obj = {
-  a: 1,
-  b: 2,
-  c: { t: 5, y: 6, z: { q: 2, w: 2, z: { a: 1, b: 2 } } },
-  d: { z: 1, c: 2 },
-  f: 1
-};
-
-let obj2 = {
-  b: 3,
-  c: { t: 5, y: 7, z: { q: 2, u: 5, z: { a: 1, b: 3, c: 4 } } },
-  d: [2, 3, 4],
-  e: { a: 1 },
-  f: 1
-};
-
-console.log(compareJson(obj, obj2));
