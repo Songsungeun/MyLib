@@ -1,11 +1,12 @@
 // OriginJson > ModifiedJson 수정된 부분 찾는 함수
 const compareJson = (originJson, modifiedJson) => {
   let differencedValues = {};
+  let addValue = (key) => { differencedValues[key] = modifiedJson[key]; }
 
   for (let key in modifiedJson) {
     // new key ? insert : next
     if (!originJson.hasOwnProperty(key)) {
-      differencedValues[key] = modifiedJson[key];
+      addValue(key);
       continue;
     }
 
@@ -17,9 +18,11 @@ const compareJson = (originJson, modifiedJson) => {
           differencedValues[key] = compareJson(originJson[key], modifiedJson[key]);
           continue;
         }
-        differencedValues[key] = modifiedJson[key];
+        // object가 아닌 type들 insert (ex => Array, Number, String, etc.)
+        addValue(key);
       } catch (e) {
-        differencedValues[key] = modifiedJson[key];
+        // constructor 없어서 오류나면 insert (ex => value > null, undefined > value, etc.)
+        addValue(key);
       }
     }
   }
