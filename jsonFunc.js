@@ -75,7 +75,7 @@ const jsonArrSort = (jsonArr, targetKey) => {
  */
 const jsonSortByKey = (jsonData) => {
   // key to keyArray
-  let keyArr = Object.keys(jsonData), sortedObject = {};
+  let keyArr = Object.keys(jsonData), sortedObj = {};
   // sort
   keyArr.sort((current, next) => {
     let currentString = current.toUpperCase();
@@ -87,16 +87,36 @@ const jsonSortByKey = (jsonData) => {
   });
 
   keyArr.forEach((key) => {
-    sortedObject[key] = jsonData[key];
+    sortedObj[key] = jsonData[key];
   })
 
-
-  // Todo
-  // 현재는 1depth만. nDepth기능까지 확장
-  return sortedObject;
+  return sortedObj;
 }
 
-export { compareJson, jsonArrSort, jsonSortByKey };
+/**
+ * @author Song sungeun
+ * @param {Object} jsonData 
+ * @returns {Object} jsonData deeply sorted by key
+ */
+const jsonSortByKeyToDeep = (jsonData) => {
+  let sortedObj = jsonSortByKey(jsonData);
 
-// let tmp = { v: 1, c: 3, e: 4, h: 1, b: 6 };
-// console.log(jsonSortByKey(tmp));
+  let getHasNdepthKey = (obj) => {
+    return Object.keys(obj)
+      .filter(key => obj[key] instanceof Object);
+  }
+
+  let keyArr = getHasNdepthKey(sortedObj);
+  if (keyArr.length > 0) {
+    keyArr.forEach(nKey => {
+      sortedObj[nKey] = jsonSortByKeyToDeep(sortedObj[nKey]);
+    })
+  }
+
+  return sortedObj;
+}
+
+export { compareJson, jsonArrSort, jsonSortByKey, jsonSortByKeyToDeep };
+
+// let tmp = { v: 1, c: 3, e: 4, h: 1, b: 6, a: { d: 5, f: 7, b: 1, a: { v: 1, n: 2, a: 3 } }, b: { z: 2, y: 3, x: 4 } };
+// console.log(jsonSortByKeyToDeep(tmp));
