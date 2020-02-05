@@ -22,8 +22,8 @@
 ## compareJson(originJson, modifiedJson) ⇒ <code>Object</code>
 get the modified data from target Json
 
-**Kind**: global function
-**Returns**: <code>Object</code> - - modified data object(json Type) or false(if. same json)
+**Kind**: global function  
+**Returns**: <code>Object</code> - - modified data object(json Type) or false(if. same json)  
 **Author:**: Song sungeun,
 
 | Param | Type | Description |
@@ -36,8 +36,8 @@ get the modified data from target Json
 ## jsonArrSort(jsonArr, targetKey) ⇒ <code>Array</code>
 func: sort by targetKey value
 
-**Kind**: global function
-**Returns**: <code>Array</code> - jsonArray
+**Kind**: global function  
+**Returns**: <code>Array</code> - jsonArray  
 **Author**: Song sungeun
 
 | Param | Type |
@@ -50,8 +50,8 @@ func: sort by targetKey value
 ## jsonSortByKey(jsonData) ⇒ <code>Object</code>
 only 1depth key sort
 
-**Kind**: global function
-**Returns**: <code>Object</code> - jsonData sorted by key
+**Kind**: global function  
+**Returns**: <code>Object</code> - jsonData sorted by key  
 **Author**: Song sungeun
 
 | Param | Type |
@@ -63,8 +63,8 @@ only 1depth key sort
 ## jsonSortByKeyToDeep(jsonData) ⇒ <code>Object</code>
 all of Ndepth key sort
 
-**Kind**: global function
-**Returns**: <code>Object</code> - jsonData deeply sorted by key
+**Kind**: global function  
+**Returns**: <code>Object</code> - jsonData deeply sorted by key  
 **Author**: Song sungeun
 
 | Param | Type |
