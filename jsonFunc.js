@@ -49,7 +49,7 @@ const compareJson = (originJson, modifiedJson) => {
  * @param {String} targetKey 
  * @returns {Array} jsonArray
  */
-const jsonSort = (jsonArr, targetKey) => {
+const jsonArrSort = (jsonArr, targetKey) => {
   if (!Array.isArray(jsonArr)) throw new Error('The first parameter must be an Array in jsonSort Function');
   if (!targetKey) console.error('check the second parameter. The second parmeter is what you want to sort in jsonSort Function');
 
@@ -68,9 +68,35 @@ const jsonSort = (jsonArr, targetKey) => {
   return jsonArr;
 }
 
+/**
+ * @author Song sungeun
+ * @param {Object} jsonData 
+ * @returns {Object} jsonData sorted by key
+ */
 const jsonSortByKey = (jsonData) => {
+  // key to keyArray
+  let keyArr = Object.keys(jsonData), sortedObject = {};
+  // sort
+  keyArr.sort((current, next) => {
+    let currentString = current.toUpperCase();
+    let nextString = next.toUpperCase();
 
+    if (currentString < nextString) return -1;
+    if (currentString > nextString) return 1;
+    return 0;
+  });
+
+  keyArr.forEach((key) => {
+    sortedObject[key] = jsonData[key];
+  })
+
+
+  // Todo
+  // 현재는 1depth만. nDepth기능까지 확장
+  return sortedObject;
 }
 
-export { compareJson, jsonSort };
+export { compareJson, jsonArrSort, jsonSortByKey };
 
+// let tmp = { v: 1, c: 3, e: 4, h: 1, b: 6 };
+// console.log(jsonSortByKey(tmp));
