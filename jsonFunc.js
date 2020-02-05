@@ -72,6 +72,7 @@ const jsonArrSort = (jsonArr, targetKey) => {
  * @author Song sungeun
  * @param {Object} jsonData 
  * @returns {Object} jsonData sorted by key
+ * @description only 1depth key sort
  */
 const jsonSortByKey = (jsonData) => {
   // key to keyArray
@@ -97,6 +98,7 @@ const jsonSortByKey = (jsonData) => {
  * @author Song sungeun
  * @param {Object} jsonData 
  * @returns {Object} jsonData deeply sorted by key
+ * @description all of Ndepth key sort
  */
 const jsonSortByKeyToDeep = (jsonData) => {
   let sortedObj = jsonSortByKey(jsonData);
