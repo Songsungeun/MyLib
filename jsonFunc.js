@@ -1,10 +1,9 @@
-// OriginJson > ModifiedJson 수정된 부분 찾는 함수
 /**
  * @author: Song sungeun,
- * @param {object} originJson
- * @param {object} modifiedJson (comparison Json)
-   @description get the modified data from target Json
-   @returns {object || boolean} modified data object(json Type) or false(if. same json)
+ * @param {Object} originJson
+ * @param {Object} modifiedJson - comparison Json
+ * @description get the modified data from target Json
+ * @returns {Object} - modified data object(json Type) or false(if. same json)
 */
 const compareJson = (originJson, modifiedJson) => {
   let differencedValues;
