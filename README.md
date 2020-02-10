@@ -15,6 +15,9 @@
 <dt><a href="#jsonSortByKeyToDeep">jsonSortByKeyToDeep(jsonData)</a> ⇒ <code>Object</code></dt>
 <dd><p>all of Ndepth key sort</p>
 </dd>
+<dt><a href="#deepCopyObject">deepCopyObject(obj)</a> ⇒ <code>Object</code></dt>
+<dd><p>deep copied Object</p>
+</dd>
 </dl>
 
 <a name="compareJson"></a>
