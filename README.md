@@ -69,4 +69,17 @@ all of Ndepth key sort
 
 | Param | Type |
 | --- | --- |
-| jsonData | <code>Object</code> |
+| jsonData | <code>Object</code> |  
+
+<a name="deepCopyObject"></a>
+
+## deepCopyObject(obj) ⇒ <code>Object</code>
+deep copied Object
+
+**Kind**: global function  
+**Returns**: <code>Object</code> - cloned obj  
+**Author**: Song sungeun  
+
+| Param | Type |
+| --- | --- |
+| obj | <code>Object</code> |

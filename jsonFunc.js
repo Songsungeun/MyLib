@@ -117,7 +117,26 @@ const jsonSortByKeyToDeep = (jsonData) => {
   return sortedObj;
 }
 
-export { compareJson, jsonArrSort, jsonSortByKey, jsonSortByKeyToDeep };
+/**
+ * @author Song sungeun
+ * @param {Object} obj 
+ * @returns {Object} cloned obj
+ * @description deep copied Object
+ */
+let deepCopyObject = (obj) => {
+  let clone = {};
+
+  Object.keys(obj).forEach(key => {
+    if (obj[key] instanceof Object) {
+      clone[key] = deepCopyObject(obj[key]);
+    } else {
+      clone[key] = obj[key];
+    }
+  })
+  return clone;
+}
+
+// export { compareJson, jsonArrSort, jsonSortByKey, jsonSortByKeyToDeep };
 
 // let tmp = { v: 1, c: 3, e: 4, h: 1, b: 6, a: { d: 5, f: 7, b: 1, a: { v: 1, n: 2, a: 3 } }, b: { z: 2, y: 3, x: 4 } };
-// console.log(jsonSortByKeyToDeep(tmp));
+// console.log(deepCopyObject(tmp));
